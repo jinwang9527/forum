@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
 
     <bean id="commonDataSourceMaster" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
         <property name="driverClassName" value="${db.driverClassName}"/>
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${db.common.url}"/>
-        <property name="username" value="${db.common.username}"/>
-        <property name="password" value="${db.common.password}"/>
+        <property name="url" value="${db.forum.common.url}"/>
+        <property name="username" value="${db.forum.common.username}"/>
+        <property name="password" value="${db.forum.common.password}"/>
 
         <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="${db.common.initialSize}"/>
-        <property name="minIdle" value="${db.common.minIdle}"/>
-        <property name="maxActive" value="${db.common.maxActive}"/>
+        <property name="initialSize" value="${db.forum.common.initialSize}"/>
+        <property name="minIdle" value="${db.forum.common.minIdle}"/>
+        <property name="maxActive" value="${db.forum.common.maxActive}"/>
 
         <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="${db.common.maxWait}"/>
+        <property name="maxWait" value="${db.forum.common.maxWait}"/>
 
         <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="${db.common.timeBetweenEvictionRunsMillis}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${db.forum.common.timeBetweenEvictionRunsMillis}"/>
 
         <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="${db.common.minEvictableIdleTimeMillis}"/>
+        <property name="minEvictableIdleTimeMillis" value="${db.forum.common.minEvictableIdleTimeMillis}"/>
         <property name="validationQuery" value="SELECT 'x'"/>
-        <property name="testWhileIdle" value="${db.common.testWhileIdle}"/>
-        <property name="testOnBorrow" value="${db.common.testOnBorrow}"/>
-        <property name="testOnReturn" value="${db.common.testOnReturn}"/>
+        <property name="testWhileIdle" value="${db.forum.common.testWhileIdle}"/>
+        <property name="testOnBorrow" value="${db.forum.common.testOnBorrow}"/>
+        <property name="testOnReturn" value="${db.forum.common.testOnReturn}"/>
 
 
 
@@ -42,7 +44,7 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="commonDataSourceMaster"/>
         <property name="mapperLocations" value="classpath*:mybatis/mappers/**/*.xml"/>
-        <property name="typeAliasesPackage" value="com.moremoney.platform.repository.domain"/>
+        <property name="typeAliasesPackage" value="com.forum.repository.mapper"/>
         <property name="plugins">
             <list>
                 <ref bean="pagePlugin"/>
@@ -53,7 +55,7 @@
     <!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.moremoney.platform.repository.mapper"/>
+        <property name="basePackage" value="com.forum.repository.mapper"/>
     </bean>
 
 
@@ -62,7 +64,6 @@
         <property name="dataSource" ref="commonDataSourceMaster"/>
     </bean>
     <tx:annotation-driven proxy-target-class="true" />
-
 
 
 </beans>

@@ -1,5 +1,11 @@
 package com.forum.common.filter;
 
+import com.forum.common.constant.ErrorCodeEnum;
+import com.forum.common.model.ResultModel;
+import com.forum.common.model.Token;
+import com.forum.common.utils.GsonUtil;
+import com.forum.common.utils.JWTUtil;
+import com.forum.common.utils.StringUtil;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class TokenInterceptor implements HandlerInterceptor {
+
 
     private static final Logger logger = Logger.getLogger(TokenInterceptor.class);
     private static final String CHARACTER_ENCODING = "UTF-8";
@@ -50,5 +57,5 @@ public class TokenInterceptor implements HandlerInterceptor {
 
     }
 
-}
 
+}

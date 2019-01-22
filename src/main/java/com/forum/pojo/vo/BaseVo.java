@@ -1,4 +1,4 @@
 package com.forum.pojo.vo;
 
-public class BaseVo {
+public class BaseVo  {
 }

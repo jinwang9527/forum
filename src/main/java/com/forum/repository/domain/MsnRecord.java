@@ -1,29 +1,73 @@
+/*
+* 文 件 名:  MsnRecord.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:MsnRecord
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MsnRecord {
+public class MsnRecord implements Serializable {
+    /**
+     * 短信记录id
+     */
     private Long pkMsnRecordId;
 
+    /**
+     * 标题
+     */
     private String title;
 
+    /**
+     * 内容
+     */
     private String content;
 
+    /**
+     * 备注
+     */
     private String note;
 
+    /**
+     * 发送人
+     */
     private Long sender;
 
+    /**
+     * 发送人类型 0：系统，1：管理员，2：员工
+     */
     private Long senderType;
 
+    /**
+     * 接收人
+     */
     private Long receiver;
 
+    /**
+     * 接收人类型 0：合伙人，1：客户，2：客户组
+     */
     private Integer receiverType;
 
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
+    /**
+     * 更新时间
+     */
     private Date updateTime;
 
+    /**
+     * 假删除 0：未删除，1：已删除
+     */
     private Boolean isDel;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getPkMsnRecordId() {
         return pkMsnRecordId;

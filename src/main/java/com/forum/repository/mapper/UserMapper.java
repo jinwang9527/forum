@@ -1,28 +1,36 @@
+/*
+* 文 件 名:  UserMapper.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:UserMapper
+* 修 改 人:  teng
+* 修改时间:  2019年01月27日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.mapper;
+
+import com.forum.repository.domain.User;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-import com.forum.repository.domain.User;
-import org.apache.ibatis.annotations.Param;
-
 public interface UserMapper {
-    long countByExample(User example);
-
-    int deleteByExample(User example);
-
     int deleteByPrimaryKey(Long pkUserId);
 
     int insert(User record);
 
-    int insertSelective(User record);
+    int batchInsert(@Param("records") List<User> records);
 
-    List<User> selectByExample(User example);
+    int insertSelective(User record);
 
     User selectByPrimaryKey(Long pkUserId);
 
-    int updateByExampleSelective(@Param("record") User record, @Param("example") User example);
+    PageList<User> selectObjectListByWhere(User record, PageBounds pageBounds);
 
-    int updateByExample(@Param("record") User record, @Param("example") User example);
+    PageList<User> selectByBillId(@Param("selective") User selective, @Param("ids") List<Long> ids, PageBounds pageBounds);
+
+    int selectCountByWhere(User record);
 
     int updateByPrimaryKeySelective(User record);
 

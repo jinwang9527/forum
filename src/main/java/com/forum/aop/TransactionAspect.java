@@ -3,11 +3,14 @@ package com.forum.aop;
 import com.forum.common.model.ResultModel;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-
+@Aspect
+@Component
 public class TransactionAspect {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -15,7 +18,7 @@ public class TransactionAspect {
     /**
      * 功能描述：定义一个 Pointcut, 使用 切点表达式函数 来描述对哪些 Join point 使用 advise.
      */
-    @Pointcut("execution(* com.forum.controller.*(..))")
+    @Pointcut("execution(* com.forum.controller.*..*(..))")
     public void pointcut() {
     }
 

@@ -1,22 +1,30 @@
+/*
+* 文 件 名:  UserReviseApplyMapper.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:UserReviseApplyMapper
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.mapper;
+
+import com.forum.repository.domain.UserReviseApply;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-import com.forum.repository.domain.UserReviseApply;
-import org.apache.ibatis.annotations.Param;
-
 public interface UserReviseApplyMapper {
-    long countByExample(UserReviseApply example);
-
-    int deleteByExample(UserReviseApply example);
-
     int insert(UserReviseApply record);
+
+    int batchInsert(@Param("records") List<UserReviseApply> records);
 
     int insertSelective(UserReviseApply record);
 
-    List<UserReviseApply> selectByExample(UserReviseApply example);
+    PageList<UserReviseApply> selectObjectListByWhere(UserReviseApply record, PageBounds pageBounds);
 
-    int updateByExampleSelective(@Param("record") UserReviseApply record, @Param("example") UserReviseApply example);
+    PageList<UserReviseApply> selectByBillId(@Param("selective") UserReviseApply selective, @Param("ids") List<Long> ids, PageBounds pageBounds);
 
-    int updateByExample(@Param("record") UserReviseApply record, @Param("example") UserReviseApply example);
+    int selectCountByWhere(UserReviseApply record);
 }

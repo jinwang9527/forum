@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Data
 public class LoginVo {
 
+
     /**
      * 用户名
      */

@@ -1,27 +1,68 @@
+/*
+* 文 件 名:  Message.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:Message
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Message {
+public class Message implements Serializable {
+    /**
+     * 主键
+     */
     private Long pkMessageId;
 
+    /**
+     * 发送者id
+     */
     private Long fkAdministratorId;
 
+    /**
+     * 接收者id
+     */
     private Long fkUserId;
 
+    /**
+     * 内容
+     */
     private String content;
 
+    /**
+     * 是否发送 0：未发送，1：已发送
+     */
     private Boolean isDelivery;
 
+    /**
+     * 是否已读 0：未读，1：已读
+     */
     private Boolean isRead;
 
+    /**
+     * 删除状态 0，未删除，1：管理员删除，2：业务员删除
+     */
     private Boolean delStatus;
 
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
+    /**
+     * 更新时间
+     */
     private Date updateTime;
 
+    /**
+     * 假删除 0：未删除，1：已删除
+     */
     private Boolean isDel;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getPkMessageId() {
         return pkMessageId;

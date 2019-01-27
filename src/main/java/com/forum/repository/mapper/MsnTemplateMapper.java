@@ -1,28 +1,36 @@
+/*
+* 文 件 名:  MsnTemplateMapper.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:MsnTemplateMapper
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.mapper;
+
+import com.forum.repository.domain.MsnTemplate;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-import com.forum.repository.domain.MsnTemplate;
-import org.apache.ibatis.annotations.Param;
-
 public interface MsnTemplateMapper {
-    long countByExample(MsnTemplate example);
-
-    int deleteByExample(MsnTemplate example);
-
     int deleteByPrimaryKey(Long pkMsnTemplateId);
 
     int insert(MsnTemplate record);
 
-    int insertSelective(MsnTemplate record);
+    int batchInsert(@Param("records") List<MsnTemplate> records);
 
-    List<MsnTemplate> selectByExample(MsnTemplate example);
+    int insertSelective(MsnTemplate record);
 
     MsnTemplate selectByPrimaryKey(Long pkMsnTemplateId);
 
-    int updateByExampleSelective(@Param("record") MsnTemplate record, @Param("example") MsnTemplate example);
+    PageList<MsnTemplate> selectObjectListByWhere(MsnTemplate record, PageBounds pageBounds);
 
-    int updateByExample(@Param("record") MsnTemplate record, @Param("example") MsnTemplate example);
+    PageList<MsnTemplate> selectByBillId(@Param("selective") MsnTemplate selective, @Param("ids") List<Long> ids, PageBounds pageBounds);
+
+    int selectCountByWhere(MsnTemplate record);
 
     int updateByPrimaryKeySelective(MsnTemplate record);
 

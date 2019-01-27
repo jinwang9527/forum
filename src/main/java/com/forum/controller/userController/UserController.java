@@ -1,8 +1,10 @@
 package com.forum.controller.userController;
 
+
 import com.forum.common.model.ResultModel;
 import com.forum.pojo.vo.userController.LoginVo;
-import com.forum.service.AdministratorService.AdministratorService;
+import com.forum.pojo.vo.userController.RegisterVo;
+import com.forum.service.userService.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +15,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-@Api(tags = "系统 - 系统参数")
+@Api(tags = "用户")
 @RestController
 @RequestMapping("user")
-public class UserInfoController {
+public class UserController {
 
     @Autowired
-    private AdministratorService administratorService;
+    private UserService userService;
 
     @ApiOperation(value = "登陆", notes = "靳旺")
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public ResultModel login(@RequestBody @Valid LoginVo loginVo) throws Exception {
-        return administratorService.login(loginVo);
+        return userService.login(loginVo);
     }
+
+
+    @ApiOperation(value = "注册", notes = "靳旺")
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public ResultModel register(@RequestBody @Valid RegisterVo registerVo) throws Exception {
+        return userService.register(registerVo);
+    }
+
+
+    @ApiOperation(value = "获取用户信息", notes = "靳旺")
+    @RequestMapping(value = "getUserInfo", method = RequestMethod.GET)
+    public ResultModel getUserInfo() throws Exception {
+        return userService.getUserInfo();
+    }
+
 
 }

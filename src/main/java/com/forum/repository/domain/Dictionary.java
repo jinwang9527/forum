@@ -1,23 +1,58 @@
+/*
+* 文 件 名:  Dictionary.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:Dictionary
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Dictionary {
+public class Dictionary implements Serializable {
+    /**
+     * 字典id
+     */
     private Long pkDictionaryId;
 
+    /**
+     * 数据库表名
+     */
     private String tableName;
 
+    /**
+     * 数据库字段
+     */
     private String fieldName;
 
+    /**
+     * 数据库枚举值
+     */
     private Integer dictionaryValue;
 
+    /**
+     * 数据库枚举显示文本
+     */
     private String dictionaryText;
 
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
+    /**
+     * 更新时间
+     */
     private Date updateTime;
 
+    /**
+     * 假删除 0：未删除，1：已删除
+     */
     private Boolean isDel;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getPkDictionaryId() {
         return pkDictionaryId;

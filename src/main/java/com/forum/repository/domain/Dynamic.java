@@ -1,23 +1,58 @@
+/*
+* 文 件 名:  Dynamic.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:Dynamic
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Dynamic {
+public class Dynamic implements Serializable {
+    /**
+     * 主键
+     */
     private Long pkDynamicId;
 
+    /**
+     * 创建人
+     */
     private Long fkUserId;
 
+    /**
+     * 标题
+     */
     private String dynamicTitle;
 
+    /**
+     * 创建人
+     */
     private Long fkAdministratorId;
 
+    /**
+     * 假删除 0：未删除，1：已删除
+     */
     private Boolean isDel;
 
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
+    /**
+     * 更新时间
+     */
     private Date updateTime;
 
+    /**
+     * 内容
+     */
     private String dynamicContent;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getPkDynamicId() {
         return pkDynamicId;

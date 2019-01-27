@@ -63,7 +63,7 @@
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="commonDataSourceMaster"/>
     </bean>
-    <tx:annotation-driven proxy-target-class="true" />
+
 
 
 

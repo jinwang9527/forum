@@ -1,32 +1,36 @@
+/*
+* 文 件 名:  PostsMapper.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:PostsMapper
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.mapper;
+
+import com.forum.repository.domain.Posts;
+import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
+import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-import com.forum.repository.domain.Posts;
-import org.apache.ibatis.annotations.Param;
-
 public interface PostsMapper {
-    long countByExample(Posts example);
-
-    int deleteByExample(Posts example);
-
     int deleteByPrimaryKey(Long pkPostsId);
 
     int insert(Posts record);
 
+    int batchInsert(@Param("records") List<Posts> records);
+
     int insertSelective(Posts record);
-
-    List<Posts> selectByExampleWithBLOBs(Posts example);
-
-    List<Posts> selectByExample(Posts example);
 
     Posts selectByPrimaryKey(Long pkPostsId);
 
-    int updateByExampleSelective(@Param("record") Posts record, @Param("example") Posts example);
+    PageList<Posts> selectObjectListByWhere(Posts record, PageBounds pageBounds);
 
-    int updateByExampleWithBLOBs(@Param("record") Posts record, @Param("example") Posts example);
+    PageList<Posts> selectByBillId(@Param("selective") Posts selective, @Param("ids") List<Long> ids, PageBounds pageBounds);
 
-    int updateByExample(@Param("record") Posts record, @Param("example") Posts example);
+    int selectCountByWhere(Posts record);
 
     int updateByPrimaryKeySelective(Posts record);
 

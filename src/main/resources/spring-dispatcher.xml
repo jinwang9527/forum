@@ -33,6 +33,7 @@
             <mvc:mapping path="/**"/>
             <mvc:exclude-mapping path="/index.html"/>
             <mvc:exclude-mapping path="/user/login"/>
+            <mvc:exclude-mapping path="/user/register"/>
             <bean class="com.forum.common.filter.TokenInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>

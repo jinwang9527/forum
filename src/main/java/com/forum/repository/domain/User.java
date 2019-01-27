@@ -1,39 +1,103 @@
+/*
+* 文 件 名:  User.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:User
+* 修 改 人:  teng
+* 修改时间:  2019年01月27日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
+    /**
+     * 用户id
+     */
     private Long pkUserId;
 
+    /**
+     * 账号
+     */
     private String account;
 
+    /**
+     * 姓名
+     */
     private String name;
 
+    /**
+     * 登陆密码
+     */
     private String password;
 
-    private Boolean sex;
+    /**
+     * 性别 0：男，1：女
+     */
+    private String sex;
 
+    /**
+     * 盐值
+     */
+    private String salt;
+
+    /**
+     * 头像
+     */
     private String headerImage;
 
+    /**
+     * 昵称
+     */
     private String nickName;
 
+    /**
+     * qq账号
+     */
     private String qq;
 
+    /**
+     * 手机号
+     */
     private String phone;
 
+    /**
+     * 出生日期
+     */
     private Date birthday;
 
+    /**
+     * 帖子数
+     */
     private Integer totalTotal;
 
+    /**
+     * 动态数
+     */
     private Integer dynamicTotal;
 
+    /**
+     * 游客 0：是，1：不是
+     */
     private Boolean isTourist;
 
+    /**
+     * 假删除 0：未删除，1：已删除
+     */
     private Boolean isDel;
 
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
+    /**
+     * 更新时间
+     */
     private Date updateTime;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getPkUserId() {
         return pkUserId;
@@ -67,12 +131,20 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Boolean getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Boolean sex) {
-        this.sex = sex;
+    public void setSex(String sex) {
+        this.sex = sex == null ? null : sex.trim();
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
     }
 
     public String getHeaderImage() {

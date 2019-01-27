@@ -1,23 +1,58 @@
+/*
+* 文 件 名:  MsnTemplate.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:MsnTemplate
+* 修 改 人:  teng
+* 修改时间:  2019年01月26日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MsnTemplate {
+public class MsnTemplate implements Serializable {
+    /**
+     * 短信模板id
+     */
     private Long pkMsnTemplateId;
 
+    /**
+     * 短信标题
+     */
     private String title;
 
+    /**
+     * 短信内容
+     */
     private String content;
 
+    /**
+     * 是否全局模板 0：否，1：是
+     */
     private Boolean isGlobal;
 
+    /**
+     * 创建人
+     */
     private Long creator;
 
+    /**
+     * 创建时间
+     */
     private Date createTime;
 
+    /**
+     * 更新时间
+     */
     private Date updateTime;
 
+    /**
+     * 假删除 0：未删除，1：已删除
+     */
     private Boolean isDel;
+
+    private static final long serialVersionUID = 1L;
 
     public Long getPkMsnTemplateId() {
         return pkMsnTemplateId;

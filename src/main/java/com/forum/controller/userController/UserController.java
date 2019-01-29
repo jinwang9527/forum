@@ -43,5 +43,10 @@ public class UserController {
         return userService.getUserInfo();
     }
 
+  /*  @ApiOperation(value = "获取用户详细信息", notes = "靳旺")
+    @RequestMapping(value = "getUserDetail", method = RequestMethod.POST)
+    public ResultModel getUserDetail(){
+
+    }*/
 
 }

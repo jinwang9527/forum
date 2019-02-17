@@ -3,6 +3,8 @@ package com.forum.pojo.vo.userController;
 import com.forum.common.validator.annotation.Enums;
 import com.forum.common.validator.annotation.Phone;
 import io.swagger.annotations.ApiModelProperty;
+
+
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 

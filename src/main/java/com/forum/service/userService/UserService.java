@@ -15,4 +15,6 @@ public interface UserService extends BaseService {
     ResultModel register( RegisterVo registerVo) throws Exception;
 
     ResultModel getUserInfo() throws Exception;
+
+    ResultModel getUserDetail()throws Exception ;
 }

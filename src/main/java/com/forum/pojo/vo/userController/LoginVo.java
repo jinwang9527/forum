@@ -1,6 +1,7 @@
 package com.forum.pojo.vo.userController;
 
 import io.swagger.annotations.ApiModelProperty;
+
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -21,4 +22,6 @@ public class LoginVo {
     @NotEmpty
     @ApiModelProperty(value = "密码")
     public String password;
+
+
 }

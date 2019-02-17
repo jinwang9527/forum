@@ -45,7 +45,9 @@ public class MyPostsServiceImpl implements MyPostsService {
         Posts posts = new Posts();
         if (selectPostsVo.getMyPosts() != null) posts.setFkUserId(TokenUtil.getUserId());
         posts.setIsDel(false);
-        PageList<Posts> post = postsMapper.selectObjectListByWhere(posts, ofPageBounds());
+
+
+        PageList<Posts> post = postsMapper.selectObjectListByWhere(posts, ofPageBounds(selectPostsVo));
 
 
         LinkedList<SelectPostsDto> selectPostsDtos = new LinkedList<>();
@@ -58,6 +60,7 @@ public class MyPostsServiceImpl implements MyPostsService {
             selectPostsDto.setNickName(user.getNickName());
             selectPostsDtos.add(selectPostsDto);
         }
+
 
         return responseSuccess(selectPostsDtos,post.getPaginator());
     }

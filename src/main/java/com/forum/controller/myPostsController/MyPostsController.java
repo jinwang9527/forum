@@ -4,6 +4,7 @@ import com.forum.common.model.ResultModel;
 import com.forum.pojo.myPostsController.AddPostsVo;
 import com.forum.pojo.myPostsController.SelectPostsDetailVo;
 import com.forum.pojo.myPostsController.SelectPostsVo;
+import com.forum.pojo.myPostsController.AddPostsDetailVo;
 import com.forum.service.myPostsService.MyPostsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,6 +41,12 @@ public class MyPostsController {
     @RequestMapping(value = "selectPostsDetail" , method = RequestMethod.POST)
     public ResultModel selectPostsDetail(@RequestBody SelectPostsDetailVo selectPostsDetailVo)throws Exception{
         return  myPostsService.selectPostsDetail(selectPostsDetailVo);
+    }
+
+    @ApiOperation(value = "查询帖子" , notes = "靳旺")
+    @RequestMapping(value = "addPostsDetail" , method = RequestMethod.POST)
+    public ResultModel addPostsDetail(@RequestBody AddPostsDetailVo addPostsDetailVo)throws Exception{
+        return  myPostsService.addPostsDetail(addPostsDetailVo);
     }
 
 

@@ -1,11 +1,11 @@
-package com.forum.pojo.myPostsController;
+package com.forum.pojo.myPostsControllerVo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
 @Data
-public class AddPostsDetailVo {
+public class AddCommentVo {
 
     /**
      * 帖子id

@@ -8,7 +8,7 @@
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="is_del" property="isDel" jdbcType="VARCHAR" />
+    <result column="is_del" property="isDel" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -73,7 +73,7 @@
         and to_days(update_time) = to_days(#{updateTime,jdbcType=TIMESTAMP})
       </if>
       <if test="isDel != null" >
-        and is_del = #{isDel,jdbcType=VARCHAR}
+        and is_del = #{isDel,jdbcType=BIT}
       </if>
     </where>
   </select>
@@ -99,7 +99,7 @@
           and to_days(update_time) = to_days(#{selective.updateTime,jdbcType=TIMESTAMP})
         </if>
         <if test="selective.isDel != null" >
-          and is_del = #{selective.isDel,jdbcType=VARCHAR}
+          and is_del = #{selective.isDel,jdbcType=BIT}
         </if>
       </if>
       <if test="ids != null" >
@@ -128,7 +128,7 @@
         and to_days(update_time) = to_days(#{updateTime,jdbcType=TIMESTAMP})
       </if>
       <if test="isDel != null" >
-        and is_del = #{isDel,jdbcType=VARCHAR}
+        and is_del = #{isDel,jdbcType=BIT}
       </if>
     </where>
   </select>
@@ -136,7 +136,7 @@
     insert into comment (pk_comment_id, fk_user_id, fk_posts_id, 
       content, create_time, update_time, is_del)
     values (#{pkCommentId,jdbcType=BIGINT}, #{fkUserId,jdbcType=BIGINT}, #{fkPostsId,jdbcType=BIGINT}, 
-      #{content,jdbcType=VARCHAR}, now(), now(), #{isDel,jdbcType=VARCHAR})
+      #{content,jdbcType=VARCHAR}, now(), now(), #{isDel,jdbcType=BIT})
   </insert>
   <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" >
     insert into comment (pk_comment_id, 
@@ -145,7 +145,7 @@
     values 
  <foreach collection="records" separator="," item="item">  (#{item.pkCommentId,jdbcType=BIGINT}, 
       #{item.fkUserId,jdbcType=BIGINT}, #{item.fkPostsId,jdbcType=BIGINT}, #{item.content,jdbcType=VARCHAR}, 
-      now(), now(), #{item.isDel,jdbcType=VARCHAR})  
+      now(), now(), #{item.isDel,jdbcType=BIT})  
  </foreach>
   </insert>
   <insert id="insertSelective" parameterType="com.forum.repository.domain.Comment" useGeneratedKeys="true" keyProperty="pkCommentId" >
@@ -193,7 +193,7 @@
         now(),
       </if>
       <if test="isDel != null" >
-        #{isDel,jdbcType=VARCHAR},
+        #{isDel,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -216,7 +216,7 @@
         update_time = now(),
       </if>
       <if test="isDel != null" >
-        is_del = #{isDel,jdbcType=VARCHAR},
+        is_del = #{isDel,jdbcType=BIT},
       </if>
     </set>
     where pk_comment_id = #{pkCommentId,jdbcType=BIGINT}
@@ -228,7 +228,7 @@
       content = #{content,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      is_del = #{isDel,jdbcType=VARCHAR}
+      is_del = #{isDel,jdbcType=BIT}
     where pk_comment_id = #{pkCommentId,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -1,26 +1,21 @@
 package com.forum.service.myPostsService.impl;
 
 import com.forum.common.model.ResultModel;
-import com.forum.common.utils.CollectionUtil;
 import com.forum.common.utils.ObjectUtil;
 import com.forum.common.utils.TokenUtil;
 import com.forum.pojo.dto.SelectPostsDto;
-import com.forum.pojo.myPostsController.AddPostsVo;
-import com.forum.pojo.myPostsController.SelectPostsDetailVo;
-import com.forum.pojo.myPostsController.SelectPostsVo;
-import com.forum.pojo.myPostsController.AddPostsDetailVo;
-import com.forum.repository.domain.Comment;
+import com.forum.pojo.myPostsControllerVo.AddPostsVo;
+import com.forum.pojo.myPostsControllerVo.SelectPostsDetailVo;
+import com.forum.pojo.myPostsControllerVo.SelectPostsVo;
 import com.forum.repository.domain.Posts;
 import com.forum.repository.domain.User;
 import com.forum.repository.mapper.PostsMapper;
 import com.forum.repository.mapper.UserMapper;
-import com.forum.repository.mapper.CommentMapper;
 import com.forum.service.myPostsService.MyPostsService;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.LinkedList;
 
@@ -34,8 +29,7 @@ public class MyPostsServiceImpl implements MyPostsService {
     @Autowired
     private UserMapper userMapper;
 
-    @Autowired
-    private CommentMapper commentMapper;
+
 
     @Override
     @Transactional
@@ -93,24 +87,6 @@ public class MyPostsServiceImpl implements MyPostsService {
 
     }
 
-    @Override
-    @Transactional
-    public ResultModel addPostsDetail(AddPostsDetailVo addPostsDetailVo) throws Exception {
-        Comment comment = new Comment();
-        ObjectUtil.annotationToObject(addPostsDetailVo, comment);
-        comment.setFkUserId(TokenUtil.getUserId());
 
-
-        User user = userMapper.selectByPrimaryKey(comment.getFkUserId());
-        if (ObjectUtil.isNull(user)) throw new Exception("找不到用户");
-
-        user.setTotalTotal(user.getTotalTotal() + 1);
-
-        if (commentMapper.insertSelective(comment) <= 0) throw new Exception("添加失败");
-        return responseSuccess();
-
-
-
-    }
 
 }

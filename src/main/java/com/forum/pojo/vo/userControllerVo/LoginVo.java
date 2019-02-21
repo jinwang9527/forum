@@ -1,4 +1,4 @@
-package com.forum.pojo.vo.userController;
+package com.forum.pojo.vo.userControllerVo;
 
 import io.swagger.annotations.ApiModelProperty;
 

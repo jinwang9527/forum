@@ -1,4 +1,4 @@
-package com.forum.pojo.myPostsController;
+package com.forum.pojo.myPostsControllerVo;
 
 import com.forum.pojo.AbstractVo;
 import lombok.Data;

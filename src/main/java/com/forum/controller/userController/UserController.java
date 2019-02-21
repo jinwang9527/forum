@@ -2,8 +2,8 @@ package com.forum.controller.userController;
 
 
 import com.forum.common.model.ResultModel;
-import com.forum.pojo.vo.userController.LoginVo;
-import com.forum.pojo.vo.userController.RegisterVo;
+import com.forum.pojo.vo.userControllerVo.LoginVo;
+import com.forum.pojo.vo.userControllerVo.RegisterVo;
 import com.forum.service.userService.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

@@ -1,4 +1,11 @@
-
+/*
+* 文 件 名:  Comment.java
+* 版     权:  百立特信息技术有限公司
+* 描     述:  数据库实体类:Comment
+* 修 改 人:  teng
+* 修改时间:  2019年02月21日
+* 修改内容:  <修改内容>
+*/
 package com.forum.repository.domain;
 
 import java.io.Serializable;
@@ -36,9 +43,9 @@ public class Comment implements Serializable {
     private Date updateTime;
 
     /**
-     * 假删除
+     * 假删除 0：未删除，1：已删除
      */
-    private String isDel;
+    private Boolean isDel;
 
     private static final long serialVersionUID = 1L;
 
@@ -90,11 +97,11 @@ public class Comment implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public String getIsDel() {
+    public Boolean getIsDel() {
         return isDel;
     }
 
-    public void setIsDel(String isDel) {
-        this.isDel = isDel == null ? null : isDel.trim();
+    public void setIsDel(Boolean isDel) {
+        this.isDel = isDel;
     }
 }

@@ -1,8 +1,8 @@
 package com.forum.service.userService;
 
 import com.forum.common.model.ResultModel;
-import com.forum.pojo.vo.userController.LoginVo;
-import com.forum.pojo.vo.userController.RegisterVo;
+import com.forum.pojo.vo.userControllerVo.LoginVo;
+import com.forum.pojo.vo.userControllerVo.RegisterVo;
 import com.forum.service.BaseService;
 
 

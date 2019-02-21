@@ -2,6 +2,7 @@ package com.forum.controller.myPostsController;
 
 import com.forum.common.model.ResultModel;
 import com.forum.pojo.myPostsController.AddPostsVo;
+import com.forum.pojo.myPostsController.SelectPostsDetailVo;
 import com.forum.pojo.myPostsController.SelectPostsVo;
 import com.forum.service.myPostsService.MyPostsService;
 import io.swagger.annotations.Api;
@@ -34,6 +35,12 @@ public class MyPostsController {
         return  myPostsService.selectPosts(selectPostsVo);
     }
 
+
+    @ApiOperation(value = "查询帖子" , notes = "靳旺")
+    @RequestMapping(value = "selectPostsDetail" , method = RequestMethod.POST)
+    public ResultModel selectPostsDetail(@RequestBody SelectPostsDetailVo selectPostsDetailVo)throws Exception{
+        return  myPostsService.selectPostsDetail(selectPostsDetailVo);
+    }
 
 
 }

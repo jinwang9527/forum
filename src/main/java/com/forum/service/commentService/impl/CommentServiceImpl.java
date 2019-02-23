@@ -49,7 +49,7 @@ public class CommentServiceImpl implements CommentService {
     @Transactional
     public ResultModel selectComment(@RequestBody SelectCommentVo selectCommentVo) throws Exception {
         Comment comment = new Comment();
-        ObjectUtil.annotationToObject(selectCommentVo, comment);
+        comment.setFkPostsId(selectCommentVo.getPkPostsId());
         comment.setIsDel(false);
 
 
